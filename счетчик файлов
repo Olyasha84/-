@@ -1,0 +1,16 @@
+ef count_files(directory):
+    try:
+        # Получаем список файлов в указанной директории
+        files = os.listdir(directory)
+        # Фильтруем только файлы (исключаем поддиректории)
+        files = [file for file in files if os.path.isfile(os.path.join(directory, file))]
+        # Выводим количество файлов
+        print(f"В директории {directory} находится {len(files)} файлов.")
+    except FileNotFoundError:
+        print(f"Директории {directory} не существует.")
+    except PermissionError:
+        print(f"Нет доступа к директории {directory}.")
+
+# Пример использования
+directory_path = "/путь/к/вашей/директории"
+count_files(directory_path)
